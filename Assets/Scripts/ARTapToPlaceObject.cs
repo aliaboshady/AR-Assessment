@@ -2,10 +2,12 @@
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
+using System;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
 	[SerializeField] GameObject placementIndicator;
+	[SerializeField] GameObject objectToPlace;
 	ARRaycastManager raycastManager;
 	Pose placementPose;
 	bool placementPoseIsValid = false;
@@ -19,6 +21,11 @@ public class ARTapToPlaceObject : MonoBehaviour
 	{
 		UpdatePlacementPose();
 		UpdatePlacementIndicator();
+
+		if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+		{
+			PlaceObject();
+		}
 	}
 
 	private void UpdatePlacementPose()
@@ -45,5 +52,10 @@ public class ARTapToPlaceObject : MonoBehaviour
 		{
 			placementIndicator.SetActive(false);
 		}
+	}
+
+	private void PlaceObject()
+	{
+		Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
 	}
 }
