@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ImageTracking : MonoBehaviour
 {
+	[SerializeField] Canvas canvas;
 	[SerializeField] ObjectsManager[] objectsManagers;
-	Dictionary<string, ObjectsManager> objectsManagersDict = new Dictionary<string, ObjectsManager>();
 
+	Dictionary<string, ObjectsManager> objectsManagersDict = new Dictionary<string, ObjectsManager>();
 	ARTrackedImageManager trackedImageManager;
 
 	private void Awake()
@@ -17,6 +18,11 @@ public class ImageTracking : MonoBehaviour
 		{
 			objectsManagersDict.Add(objectManager.referenceName, objectManager);
 		}
+	}
+
+	void OnApplicationPause()
+	{
+		RemoveAllObjects();
 	}
 
 	private void OnEnable()
@@ -33,21 +39,23 @@ public class ImageTracking : MonoBehaviour
 	{
 		foreach (ARTrackedImage trackedImage in eventArgs.added)
 		{
-			UpdateImage(trackedImage);
+			UpdateObject(trackedImage);
 		}
 
 		foreach (ARTrackedImage trackedImage in eventArgs.updated)
 		{
-			UpdateImage(trackedImage);
-		}
-
-		foreach (ARTrackedImage trackedImage in eventArgs.removed)
-		{
-			//spawnedPrefab[trackedImage.name].SetActive(false);
+			if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+			{
+				UpdateObject(trackedImage);
+			}
+			else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
+			{
+				RemoveUntrackedObject(trackedImage);
+			}
 		}
 	}
 
-	void UpdateImage(ARTrackedImage trackedImage)
+	void UpdateObject(ARTrackedImage trackedImage)
 	{
 		string name = trackedImage.referenceImage.name;
 		Vector3 position = trackedImage.transform.position;
@@ -58,7 +66,22 @@ public class ImageTracking : MonoBehaviour
 
 		tempObject.transform.position = position;
 		tempObjectsManager.ObjectAppear();
+	}
 
-		print(name);
+	void RemoveUntrackedObject(ARTrackedImage trackedImage)
+	{
+		string name = trackedImage.referenceImage.name;
+		ObjectsManager tempObjectsManager = objectsManagersDict[name];
+		int tempIndex = tempObjectsManager.objectIndex;
+		GameObject tempObject = tempObjectsManager.objectsToPlace[tempIndex];
+		tempObject.SetActive(false);
+	}
+
+	void RemoveAllObjects()
+	{
+		foreach (ObjectsManager objectManager in objectsManagers)
+		{
+			objectManager.HideAllObjects();
+		}
 	}
 }

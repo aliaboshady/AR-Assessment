@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjectsManager : MonoBehaviour
 {
@@ -10,11 +8,11 @@ public class ObjectsManager : MonoBehaviour
 
     public void ObjectAppear()
 	{
-		//HideAllObjects();
+		HideAllObjects();
 		objectsToPlace[objectIndex].SetActive(true);
 	}
 
-	void HideAllObjects()
+	public void HideAllObjects()
 	{
 		for (int i = 0; i < objectsToPlace.Length; i++)
 		{
