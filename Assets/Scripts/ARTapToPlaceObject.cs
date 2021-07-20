@@ -1,61 +1,90 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
-using System;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
-	[SerializeField] GameObject placementIndicator;
-	[SerializeField] GameObject objectToPlace;
-	ARRaycastManager raycastManager;
-	Pose placementPose;
-	bool placementPoseIsValid = false;
+	[SerializeField] GameObject canvas;
+	[SerializeField] GameObject[] objectsToPlace;
+	int objectIndex = 0;
 
 	private void Start()
 	{
-		raycastManager = FindObjectOfType<ARRaycastManager>();
+		objectsToPlace[objectIndex].SetActive(true);
 	}
 
 	private void Update()
 	{
-		UpdatePlacementPose();
-		UpdatePlacementIndicator();
 
-		if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-		{
-			PlaceObject();
-		}
+		//if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+		//{
+			
+		//}
 	}
 
-	private void UpdatePlacementPose()
+	public void ClosePanel()
 	{
-		Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-		var hits = new List<ARRaycastHit>();
-		raycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
 
-		placementPoseIsValid = hits.Count > 0;
-		if (placementPoseIsValid)
-		{
-			placementPose = hits[0].pose;
-		}
 	}
 
-	private void UpdatePlacementIndicator()
+	public void NextObject()
 	{
-		if (placementPoseIsValid)
+		HideAllObjects();
+		if(++objectIndex >= objectsToPlace.Length)
 		{
-			placementIndicator.SetActive(true);
-			placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+			objectIndex = 0;
 		}
-		else
+		objectsToPlace[objectIndex].SetActive(true);
+	}
+
+	public void PrevObject()
+	{
+		HideAllObjects();
+		if (--objectIndex <= -1)
 		{
-			placementIndicator.SetActive(false);
+			objectIndex = objectsToPlace.Length - 1;
+		}
+		objectsToPlace[objectIndex].SetActive(true);
+	}
+
+	void HideAllObjects()
+	{
+		for (int i = 0; i < objectsToPlace.Length; i++)
+		{
+			objectsToPlace[i].SetActive(false);
 		}
 	}
 
-	private void PlaceObject()
-	{
-		Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
-	}
+	//private void UpdatePlacementPose()
+	//{
+	//	Vector3 screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+	//	var hits = new List<ARRaycastHit>();
+	//	raycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+
+	//	placementPoseIsValid = hits.Count > 0;
+	//	if (placementPoseIsValid)
+	//	{
+	//		placementPose = hits[0].pose;
+	//	}
+	//}
+
+	//private void UpdatePlacementIndicator()
+	//{
+	//	if (placementPoseIsValid)
+	//	{
+	//		placementIndicator.SetActive(true);
+	//		placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+	//	}
+	//	else
+	//	{
+	//		placementIndicator.SetActive(false);
+	//	}
+	//}
+
+	//private void PlaceObject()
+	//{
+	//	Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
+	//}
 }

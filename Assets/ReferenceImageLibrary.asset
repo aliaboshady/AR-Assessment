@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4921620968102245683
+  m_GuidHigh: 5496161827101567626
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4889774005916841569
+      m_GuidHigh: 12662417905326380165
+    m_SerializedTextureGuid:
+      m_GuidLow: 17686913456015349852
+      m_GuidHigh: 6576483633006763833
+    m_Size: {x: 15, y: 12.430279}
+    m_SpecifySize: 1
+    m_Name: Marvel
+    m_Texture: {fileID: 2800000, guid: 36df185c8a14f57439df8940055d445b, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5550923550593216629
+      m_GuidHigh: 10799937262999222169
+    m_SerializedTextureGuid:
+      m_GuidLow: 2779944154209768725
+      m_GuidHigh: 9197790719544942922
+    m_Size: {x: 16, y: 14.533865}
+    m_SpecifySize: 1
+    m_Name: DC
+    m_Texture: {fileID: 2800000, guid: bf18d515587a26944a61dc6ced1da57f, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5425713533843356937
+      m_GuidHigh: 4095253837435370377
+    m_SerializedTextureGuid:
+      m_GuidLow: 15430716126695965057
+      m_GuidHigh: 18241930695898512073
+    m_Size: {x: 7.849741, y: 10}
+    m_SpecifySize: 1
+    m_Name: TMNT
+    m_Texture: {fileID: 2800000, guid: d19ac181ea8fd624c93a536a515b28fd, type: 3}
