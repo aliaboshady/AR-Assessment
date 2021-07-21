@@ -3,15 +3,47 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] Image panel;
-    [SerializeField] Text objectName;
-    [SerializeField] Text description;
+	[SerializeField] Image panel;
+	[SerializeField] Text objectName;
+	[SerializeField] Text description;
+	[SerializeField] float rotateSpeed;
+	[SerializeField] float scaleSpeed;
+	[SerializeField] float minScale;
+	[SerializeField] float maxScale;
+
 	ObjectInfo currentObjectInfo;
 	ObjectsManager currentObjectManager;
 
+	bool rotateRight = false;
+	bool rotateLeft = false;
+	bool scaleBig = false;
+	bool scaleSmall = false;
+
+	private void Update()
+	{
+		OnTouchObject();
+
+		if (rotateRight)
+		{
+			RotateRight();
+		}
+		if (rotateLeft)
+		{
+			RotateLeft();
+		}
+		if (scaleBig)
+		{
+			ScaleBig();
+		}
+		if (scaleSmall)
+		{
+			ScaleSmall();
+		}
+	}
+
 	public void OpenPanel()
 	{
-		if(currentObjectInfo != null)
+		if (currentObjectInfo != null)
 		{
 			panel.gameObject.SetActive(true);
 			objectName.text = currentObjectInfo.objectName;
@@ -26,7 +58,7 @@ public class UIController : MonoBehaviour
 
 	public void NextObject()
 	{
-		if(currentObjectManager != null)
+		if (currentObjectManager != null)
 		{
 			currentObjectInfo = currentObjectManager.GetNextObject().GetComponent<ObjectInfo>();
 			currentObjectManager.ObjectAppear();
@@ -44,9 +76,84 @@ public class UIController : MonoBehaviour
 		}
 	}
 
-	private void Update()
+	public void OnRotateRightDown()
 	{
-		OnTouchObject();
+		rotateRight = true;
+	}
+	public void OnRotateRightUp()
+	{
+		rotateRight = false;
+	}
+
+	public void OnRotateLeftDown()
+	{
+		rotateLeft = true;
+	}
+
+	public void OnRotateLeftUp()
+	{
+		rotateLeft = false;
+	}
+	public void OnScaleBigDown()
+	{
+		scaleBig = true;
+	}
+	public void OnScaleBigUp()
+	{
+		scaleBig = false;
+	}
+
+	public void OnScaleSmallDown()
+	{
+		scaleSmall = true;
+	}
+
+	public void OnScaleSmallUp()
+	{
+		scaleSmall = false;
+	}
+
+	void RotateRight()
+	{
+		if (currentObjectInfo != null)
+		{
+			currentObjectInfo.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+		}
+	}
+
+	void RotateLeft()
+	{
+		if (currentObjectInfo != null)
+		{
+			currentObjectInfo.transform.Rotate(Vector3.up * -rotateSpeed * Time.deltaTime);
+		}
+	}
+
+	void ScaleBig()
+	{
+		if (currentObjectInfo != null)
+		{
+			Vector3 scale = currentObjectInfo.transform.localScale;
+			if(scale.x < maxScale)
+			{
+				float delta = scaleSpeed * Time.deltaTime;
+				scale += new Vector3(delta, delta, delta);
+				currentObjectInfo.transform.localScale = scale;
+			}
+		}
+	}
+	void ScaleSmall()
+	{
+		if (currentObjectInfo != null)
+		{
+			Vector3 scale = currentObjectInfo.transform.localScale;
+			if (scale.x > minScale)
+			{
+				float delta = scaleSpeed * Time.deltaTime;
+				scale -= new Vector3(delta, delta, delta);
+				currentObjectInfo.transform.localScale = scale;
+			}
+		}
 	}
 
 	void OnTouchObject()
@@ -67,11 +174,9 @@ public class UIController : MonoBehaviour
 
 					if (touchedObjectInfo != null)
 					{
-						//
 						currentObjectInfo = touchedObjectInfo;
 						currentObjectManager = touchedObjectInfo.objectManager;
 						OpenPanel();
-						//
 					}
 				}
 			}
