@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3981964854137186851}
   - component: {fileID: 223974227}
+  - component: {fileID: 8261772298841585004}
   m_Layer: 0
   m_Name: Raph
   m_TagString: Untagged
@@ -45,6 +46,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.98, y: 1.25, z: 0.79}
   m_Center: {x: 0, y: 0.51, z: -0.28}
+--- !u!114 &8261772298841585004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326014495280312473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a363c7978d8e0645aa5729b63d07d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Raphael
+  objectDescription: Raphael is a fictional superhero and one of the four main characters
+    of the Teenage Mutant Ninja Turtles comics and all related media.[2] He is generally
+    depicted as the second oldest/mid-middle-child of the turtle brothers, but has
+    once been portrayed as the eldest.[3]  He is usually depicted wearing a red eye
+    mask; in this regard he is the only turtle to retain the color in all media,
+    whereas the others each received a different color. Raphael wields twin sai,
+    the points of which are usually sharpened, as his primary weapon. Raphael is
+    most famous for his temperamental and cynical personality, being short-tempered,
+    aggressive, sullen, maddened, sarcastic, and rebellious.
+  objectManager: {fileID: 0}
 --- !u!1 &4721140902796249152
 GameObject:
   m_ObjectHideFlags: 0

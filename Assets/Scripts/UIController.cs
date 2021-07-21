@@ -4,10 +4,19 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     [SerializeField] Image panel;
+    [SerializeField] Text objectName;
+    [SerializeField] Text description;
+	ObjectInfo currentObjectInfo;
+	ObjectsManager currentObjectManager;
 
 	public void OpenPanel()
 	{
-		panel.gameObject.SetActive(true);
+		if(currentObjectInfo != null)
+		{
+			panel.gameObject.SetActive(true);
+			objectName.text = currentObjectInfo.objectName;
+			description.text = currentObjectInfo.objectDescription;
+		}
 	}
 
 	public void ClosePanel()
@@ -37,6 +46,11 @@ public class UIController : MonoBehaviour
 
 	private void Update()
 	{
+		OnTouchObject();
+	}
+
+	void OnTouchObject()
+	{
 		if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
@@ -46,8 +60,17 @@ public class UIController : MonoBehaviour
 			{
 				if (hit.collider != null)
 				{
+					GameObject touchedObject = hit.transform.gameObject;
+					ObjectInfo touchedObjectInfo = touchedObject.GetComponent<ObjectInfo>();
+
 					OpenPanel();
-					//GameObject touchedObject = hit.transform.gameObject;
+
+					if (touchedObjectInfo != null)
+					{
+						currentObjectInfo = touchedObjectInfo;
+						currentObjectManager = touchedObjectInfo.objectManager; ;
+						OpenPanel();
+					}
 				}
 			}
 		}

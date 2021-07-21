@@ -135,6 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636660991008675135}
   - component: {fileID: 1114040581}
+  - component: {fileID: 8048867363787776633}
   m_Layer: 0
   m_Name: Leo
   m_TagString: Untagged
@@ -170,6 +171,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.27, y: 1.1, z: 0.75}
   m_Center: {x: 0, y: 0.5, z: 0.15}
+--- !u!114 &8048867363787776633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260662736811970437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a363c7978d8e0645aa5729b63d07d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Leonardo
+  objectDescription: Leonardo, nicknamed Leo, is a fictional superhero and one of
+    the four main characters in the Teenage Mutant Ninja Turtles comics and related
+    media.[2][3]  He is often depicted wearing a blue bandanna. His signature weapons
+    are two Ninjatos, commonly confused as Katanas. Leonardo is the eldest brother
+    and the leader of the group. He is the most skilled, the most serious, the most
+    spiritual, the most mature, the most disciplined and the most in-line with Splinter's
+    teachings and thoughts. Like all of the brothers, he is named after an Italian
+    Renaissance artist, in this case Leonardo da Vinci.
+  objectManager: {fileID: 0}
 --- !u!1 &296481407164763327
 GameObject:
   m_ObjectHideFlags: 0

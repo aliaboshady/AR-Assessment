@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 507931195737715497}
   - component: {fileID: 352734246}
+  - component: {fileID: 3624853151787533199}
   m_Layer: 0
   m_Name: Batman
   m_TagString: Untagged
@@ -45,6 +46,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4, y: 1.5, z: 0.65}
   m_Center: {x: 0, y: 0.54, z: -0.21}
+--- !u!114 &3624853151787533199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884772710410447251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a363c7978d8e0645aa5729b63d07d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Batman
+  objectDescription: Batman[a] is a superhero who appears in American comic books
+    published by DC Comics. Batman was created by artist Bob Kane and writer Bill
+    Finger, and debuted in the 27th issue of the comic book Detective Comics on March
+    30, 1939. In the DC Universe continuity, Batman is the alias of Bruce Wayne,
+    a wealthy American playboy, philanthropist, and industrialist who resides in
+    Gotham City. Batman's origin story features him swearing vengeance against criminals
+    after witnessing the murder of his parents Thomas and Martha; he trains himself
+    physically and intellectually, crafts a bat-inspired persona, and monitors the
+    Gotham streets at night.
+  objectManager: {fileID: 0}
 --- !u!1 &8199528764659077450
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3911443118941049545}
   - component: {fileID: 7902782742718719963}
+  - component: {fileID: 867233659}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -45,6 +46,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 1.05, z: 0.28}
   m_Center: {x: 0, y: 0.49, z: 0}
+--- !u!114 &867233659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911443118941049546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a363c7978d8e0645aa5729b63d07d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Flash
+  objectDescription: The Flash (Bartholomew Henry "Barry" Allen) is a fictional superhero
+    appearing in a series of American comic books published by DC Comics. The character
+    first appeared in Showcase #4 (October 1956), created by writer Robert Kanigher
+    and penciler Carmine Infantino.[1] Barry Allen is a reinvention of a previous
+    character called the Flash.  Because he is a speedster, his power consists mainly
+    of superhuman speed. Various other effects are also attributed to his ability
+    to control the slowness of molecular vibrations, including his ability to vibrate
+    at speed to pass through objects. The Flash wears a distinct red and gold costume
+    treated to resist friction and wind resistance, traditionally storing the costume
+    compressed inside a ring.
+  objectManager: {fileID: 0}
 --- !u!1001 &3911443118112483122
 PrefabInstance:
   m_ObjectHideFlags: 0

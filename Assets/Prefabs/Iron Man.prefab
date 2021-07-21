@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3663528827501892815}
   - component: {fileID: 2110723972}
+  - component: {fileID: 6168356168592944673}
   m_Layer: 0
   m_Name: Iron Man
   m_TagString: Untagged
@@ -45,6 +46,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1.21, z: 0.27}
   m_Center: {x: 0, y: 0.57, z: 0}
+--- !u!114 &6168356168592944673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151378372030041717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a363c7978d8e0645aa5729b63d07d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Iron Man
+  objectDescription: Iron Man is a superhero appearing in American comic books published
+    by Marvel Comics. The character was co-created by writer and editor Stan Lee,
+    developed by scripter Larry Lieber, and designed by artists Don Heck and Jack
+    Kirby. The character made his first appearance in Tales of Suspense #39 (cover
+    dated March 1963), and received his own title in Iron Man #1 (May 1968). Also
+    in 1963, the character founded the Avengers alongside Thor, Ant-Man, Wasp and
+    the Hulk.
+  objectManager: {fileID: 0}
 --- !u!1 &8949756087095124040
 GameObject:
   m_ObjectHideFlags: 0
