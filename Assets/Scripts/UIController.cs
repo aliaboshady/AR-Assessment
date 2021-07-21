@@ -24,25 +24,25 @@ public class UIController : MonoBehaviour
 		panel.gameObject.SetActive(false);
 	}
 
-	//public void NextObject()
-	//{
-	//	HideAllObjects();
-	//	if (++objectIndex >= objectsToPlace.Length)
-	//	{
-	//		objectIndex = 0;
-	//	}
-	//	objectsToPlace[objectIndex].SetActive(true);
-	//}
+	public void NextObject()
+	{
+		if(currentObjectManager != null)
+		{
+			currentObjectInfo = currentObjectManager.GetNextObject().GetComponent<ObjectInfo>();
+			currentObjectManager.ObjectAppear();
+			OpenPanel();
+		}
+	}
 
-	//public void PrevObject()
-	//{
-	//	HideAllObjects();
-	//	if (--objectIndex <= -1)
-	//	{
-	//		objectIndex = objectsToPlace.Length - 1;
-	//	}
-	//	objectsToPlace[objectIndex].SetActive(true);
-	//}
+	public void PrevObject()
+	{
+		if (currentObjectManager != null)
+		{
+			currentObjectInfo = currentObjectManager.GetPreviousObject().GetComponent<ObjectInfo>();
+			currentObjectManager.ObjectAppear();
+			OpenPanel();
+		}
+	}
 
 	private void Update()
 	{

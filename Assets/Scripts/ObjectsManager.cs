@@ -19,4 +19,26 @@ public class ObjectsManager : MonoBehaviour
 			objectsToPlace[i].SetActive(false);
 		}
 	}
+
+	public GameObject GetNextObject()
+	{
+		if (++objectIndex >= objectsToPlace.Length)
+		{
+			objectIndex = 0;
+		}
+		GameObject objectToReturn = objectsToPlace[objectIndex];
+		objectToReturn.SetActive(true);
+		return objectToReturn;
+	}
+
+	public GameObject GetPreviousObject()
+	{
+		if (--objectIndex <= -1)
+		{
+			objectIndex = objectsToPlace.Length - 1;
+		}
+		GameObject objectToReturn = objectsToPlace[objectIndex];
+		objectToReturn.SetActive(true);
+		return objectToReturn;
+	}
 }
