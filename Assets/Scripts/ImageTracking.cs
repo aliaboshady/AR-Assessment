@@ -10,9 +10,12 @@ public class ImageTracking : MonoBehaviour
 	Dictionary<string, ObjectsManager> objectsManagersDict = new Dictionary<string, ObjectsManager>();
 	ARTrackedImageManager trackedImageManager;
 
+	UIController UIcontroller;
+
 	private void Awake()
 	{
 		trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+		UIcontroller = FindObjectOfType<UIController>();
 
 		foreach (ObjectsManager objectManager in objectsManagers)
 		{
@@ -66,6 +69,8 @@ public class ImageTracking : MonoBehaviour
 
 		tempObject.transform.position = position;
 		tempObjectsManager.ObjectAppear();
+
+		UIcontroller.AssignObjectToPanelFromManager(tempObjectsManager);
 	}
 
 	void RemoveUntrackedObject(ARTrackedImage trackedImage)

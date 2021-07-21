@@ -67,12 +67,24 @@ public class UIController : MonoBehaviour
 
 					if (touchedObjectInfo != null)
 					{
+						//
 						currentObjectInfo = touchedObjectInfo;
-						currentObjectManager = touchedObjectInfo.objectManager; ;
+						currentObjectManager = touchedObjectInfo.objectManager;
 						OpenPanel();
+						//
 					}
 				}
 			}
+		}
+	}
+
+	public void AssignObjectToPanelFromManager(ObjectsManager newObjectsManager)
+	{
+		if (panel.gameObject.activeSelf)
+		{
+			currentObjectInfo = newObjectsManager.objectsToPlace[newObjectsManager.objectIndex].GetComponent<ObjectInfo>();
+			currentObjectManager = newObjectsManager;
+			OpenPanel();
 		}
 	}
 }
